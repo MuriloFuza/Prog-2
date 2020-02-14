@@ -1,0 +1,8 @@
+Melhor:30847
+medio :22267 
+pior  :
+
+Pesquisar melhor casa e piro caso dos metodos de seleção nos livros de 
+Ziviani projeto de algoritimos
+schildt	turbo c
+Cornen 	Algoritimos

@@ -1,0 +1,238 @@
+É um otimo ordenador endo consumo de memória bem reduzida
+
+Técnica de estruturação chamada heap(max-heap)
+	Heap=Arvore Binaria quase completa;
+	Max-Heap= Nó pai é sempre maior que um dos filhos;
+
+**Para se fazer o max o maior nó sempre deve estar acima dos menores**
+
+Vetor == |52|45|25|31|28|17|65|35|42|86|
+
+				52
+			    /        \
+			45		25
+		       /  \           /    \
+		    31      28	     17    65	
+                   /  \    /
+		  35  42  86 <-INICIO
+
+Da direita para a esquerda de baixo para cima
+
+				52
+			    /        \
+			45		25
+		       /  \           /    \
+		    42      86	     17    65	<-Este nó em execução
+                   /  \    /
+		  35  31  28 
+
+
+				52
+			    /        \
+			45		65
+mudando este nó->      /  \           /    \
+		    42      86	     17    25	
+                   /  \    /
+		  35  31  28 
+
+
+				52
+			    /        \
+	Aqui	->	86		65
+		       /  \           /    \
+		    42      45	     17    25	
+                   /  \    /
+		  35  31  28 
+
+				86
+			    /        \
+	        	52		65
+		       /  \           /    \
+		    42      45	     17    25	<-MAX
+                   /  \    /
+		  35  31  28
+
+
+
+
+Vetor ordenando	= |86| (86)Fixado então sai da arvore e entra em seu lugar a 
+folha mais distante
+	
+	
+				28
+			    /        \
+	        	52		65
+		       /  \           /    \
+		    42      45	     17    25	<-MAX Fura e precisa ser refeito
+                   /  \    
+		  35  31  
+
+				
+				65
+			    /        \
+	        	52		28
+		       /  \           /    \
+		    42      45	     17    25	<-MAX refeito
+                   /  \    
+		  35  31  
+
+
+Vetor ordenando	= |65|86| (65)Fixado então sai da arvore e entra em seu lugar a 
+folha mais distante
+
+				31
+			    /        \
+	        	52		28
+		       /  \           /    \
+		    42      45	     17    25	<-MAX Fura e precisa ser refeito
+                   /      
+		  35  
+
+
+				52
+			    /        \
+	        	31		28
+		       /  \           /    \
+		    42      45	     17    25	<-MAX  sendo refeito
+                   /      
+		  35  
+				
+				52
+			    /        \
+	        	45		28
+		       /  \           /    \
+		    42      31	     17    25	<-MAX  refeito
+                   /      
+		  35  
+
+Vetor ordenando	= |52|65|86| (52)Fixado então sai da arvore e entra em seu lugar a folha mais distante
+
+				35  
+			    /        \
+	        	45		28
+		       /  \           /    \
+		    42      31	     17    25	<-MAX fura e precisa ser refeito
+
+
+				45
+			    /        \
+	        	35  		28
+		       /  \           /    \
+		    42      31	     17    25	<-MAX sendo refeito
+
+				
+				45
+			    /        \
+	        	42  		28
+		       /  \           /    \
+		    35      31	     17    25	<-MAX  refeito
+                    
+
+Vetor ordenando	= |45|52|65|86| (45)Fixado então sai da arvore e entra em seu lugar  a folha mais distante
+
+				25
+			    /        \
+	        	42  		28
+		       /  \           /    
+		    35      31	     17    	<-MAX fura e precisa ser refeito
+
+
+
+				42
+			    /        \
+	        	25  		28
+		       /  \           /    
+		    35      31	     17    	<-MAX sendo refeito
+
+
+				42
+			    /        \
+	        	35  		28
+		       /  \           /    
+		    25      31	     17    	<-MAX refeito
+
+
+Vetor ordenando	= |42|45|52|65|86| (42)Fixado então sai da arvore e entra em seu lugar  a folha mais distante
+
+				
+				17
+			    /        \
+	        	35  		28
+		       /  \               
+		    25      31	         	<-MAX fura e precisa ser refeito
+
+				35
+			    /        \
+	        	17  		28
+		       /  \               
+		    25      31	         	<-MAX sendo refeito
+
+				35
+			    /        \
+	        	31  		28
+		       /  \               
+		    25      17	         	<-MAX refeito
+
+
+Vetor ordenando	= 35|42|45|52|65|86| (35)Fixado então sai da arvore e entra em seu lugar  a folha mais distante
+
+				17
+			    /        \
+	        	31  		28
+		       /                 
+		    25      	         	<-MAX fura e precisa ser refeito
+
+				31
+			    /        \
+	        	17  		28
+		       /                 
+		    25      	         	<-MAX sendo refeito
+
+				31
+			    /        \
+	        	25  		28
+		       /                 
+		    17      	         	<-MAX refeito
+
+Vetor ordenando	= 31|35|42|45|52|65|86| (31)Fixado então sai da arvore e entra em seu lugar  a folha mais distante
+
+				17
+			    /        \
+	        	25  		28
+		          	         	<-MAX fura e precisa ser refeito
+				
+				28
+			    /        \
+	        	25  		17
+		          	         	<-MAX  refeito
+
+Vetor ordenando	= 28|31|35|42|45|52|65|86| (28)Fixado então sai da arvore e entra em seu lugar  a folha mais distante
+
+				17
+			    /       
+	        	25  		
+		          	         	<-MAX fura e precisa ser refeito
+
+				25
+			    /       
+	        	17  		
+		          	         	<-MAX fura e precisa ser refeito
+
+Vetor ordenando	= 25|28|31|35|42|45|52|65|86| (25)Fixado então sai da arvore e entra em seu lugar  a folha mais distante
+
+			***Restou apenas o 17***
+
+Vetor ordenando	= 17|25|28|31|35|42|45|52|65|86| 
+
+
+
+
+
+
+
+
+
+
+
+
+ 
